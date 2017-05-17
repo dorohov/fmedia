@@ -1987,7 +1987,9 @@
 }
 .ad-europa-page{}
 ._adep__{
-	&inner{}
+	&inner{
+		position: relative;
+	}
 	&row{
 		flex-wrap: wrap;
 	}
@@ -2005,6 +2007,25 @@
 		@media @media-screen {
 			padding-left: 20px;
 			padding-right: 20px;			
+		}
+	}
+	&text-block{
+		&:last-child{margin-bottom: 0}
+		@media @media-device {margin-bottom: 30px}
+		@media @media-screen {margin-bottom: 3.5vw;}
+	}
+	&ppt{
+		padding-left: 75px;
+		font-weight: 700;
+		a{
+			display: inline-block;
+			text-transform: uppercase;
+			text-decoration: underline;
+			.calcFontSize(16, 21, 320, 1680);
+			.calcLineHeight(22, 30, 320, 1680);
+			&:hover{
+				text-decoration: none;
+			}
 		}
 	}
 }
