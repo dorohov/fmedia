@@ -1,0 +1,32 @@
+.video__{
+	&item{
+		margin-bottom: 15px;
+		video{
+			width: 100%;
+			@media @media-size-xs-p {
+				height: 300px;
+			}
+			@media @media-size-xs-l {
+				height: 200px;
+			}
+			@media @media-size-sm {
+				height: 25vw;
+    			max-height: 300px;
+			}
+			@media @media-screen {
+				height: 27vw;
+    			max-height: 500px;
+			}
+		} 
+	}
+	&heading{
+		font-weight: 700;
+		.calcFontSize(22, 28, 320, 1680);
+		.calcLineHeight(26, 32, 320, 1680);
+		@media @media-screen {padding-left: 30px;}
+	}
+	&note{
+		.calcFontSize(16, 22, 320, 1680);
+		.calcLineHeight(22, 30, 320, 1680);
+	}
+}

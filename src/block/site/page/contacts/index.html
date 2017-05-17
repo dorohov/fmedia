@@ -1,0 +1,38 @@
+<div class="{{class}}">
+	<div class="container {{prefix_block}}container">
+		<div class="{{prefix_block}}panel">
+			[[azbntple 
+				tpl="/src/block/site/default/page-header/heading.html" 
+				prefix_header="page-header__"
+				prefix_block="_cnp__"  
+				header="Контакты"
+			]]
+			<div class="{{prefix_block}}text">
+				<p>Звоните! Мы&nbsp;предложим вам выгодные условия размещения рекламы на&nbsp;наших радиостанциях, составим оптимальную рекламную кампанию, изготовим ролик, проконтролируем оперативное размещение рекламы и&nbsp;предоставим полный отчет о&nbsp;ходе рекламной кампании.</p>
+			</div>
+			<div class="row {{prefix_block}}row">
+				<div class="cols {{prefix_block}}cols">
+					<div class="{{prefix_block}}item">
+						<div class="{{prefix_block}}item-icon tel">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="tel" ]]</div>
+						<div><a href="tel:{{contacts.phone_tel}}" class="{{prefix_block}}phone">{{contacts.phone}}</a></div>
+						<div><a href="tel:{{contacts.phone2_tel}}" class="{{prefix_block}}phone">{{contacts.phone2}}</a></div>
+						<div><a href="tel:{{contacts.phone3_tel}}" class="{{prefix_block}}phone">{{contacts.phone3}}</a></div>
+					</div>
+				</div> 
+				<div class="cols {{prefix_block}}cols">
+					<div class="{{prefix_block}}item ">
+						<div class="{{prefix_block}}item-icon address">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="address" ]]</div>
+						{{contacts.address}}
+					</div>
+				</div>
+				<div class="cols {{prefix_block}}cols">
+					<div class="{{prefix_block}}item">
+						<div class="{{prefix_block}}item-icon">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="mailto" ]]</div>
+						<a href="mailto:{{contacts.email}}" class="{{prefix_block}}mailto">{{contacts.email}}</a>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<div id="map-google-office" class="{{prefix_block}}map"></div>
+</div>

@@ -1,0 +1,72 @@
+.include-custom-font(
+	@family: @geometria, 
+	@src-name: @geometria, 
+	@weight: normal, 
+	@style: normal
+	){
+	@font-face{			
+		font-family: "@{family}";			
+		src:	url('@{url-path-fonts}/@{src-name}.woff2') format('woff2'),
+				url('@{url-path-fonts}/@{src-name}.woff') format('woff');
+		font-weight: @weight;
+		font-style: @style;		
+	}
+}
+.include-custom-icon(@family: @icon, @weight: normal, @style: normal){
+	@font-face{			
+		font-family: "@{family}";			
+		src: url('@{url-path-fonts}/@{family}.woff') format('woff');
+		font-weight: @weight;
+		font-style: @style;		
+	}
+}
+
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria-thin,
+	@weight: 100, 
+	@style: normal
+	);
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria-light,
+	@weight: 300, 
+	@style: normal
+	);
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria,
+	@weight: 400, 
+	@style: normal
+	);
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria,
+	@weight: 400, 
+	@style: italic
+	);
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria-med,
+	@weight: 500, 
+	@style: normal
+	);
+.include-custom-font(
+	@family: @geometria,
+	@src-name: @geometria-bold,
+	@weight: 700, 
+	@style: normal
+	);
+//
+.include-custom-font(
+	@family: @bague,
+	@src-name: @bague-bold,
+	@weight: 700, 
+	@style: normal
+	);
+.include-custom-font(
+	@family: @bague,
+	@src-name: @bague-ubold,
+	@weight: 800, 
+	@style: normal
+	);

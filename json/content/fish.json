@@ -1,0 +1,33 @@
+{
+	"contacts":{
+		"name":"F-media",
+		"domain":"polka.com.ru",
+		"domain_link":"http://polka.com.ru/",
+		"agreement_page":"agreement",
+		"copyright":"F-media",
+		"email":"testF-Media@mail.ru",
+		"phone":"+7 (4862) <span>43-20-03</span>",
+		"phone_tel":"+74862432003",
+		"phone2":"+7 (4862) <span>43-20-04</span>",
+		"phone2_tel":"+74862432004",
+		"phone3":"+7 (4862) <span>48-40-04</span>",
+		"phone3_tel":"+74862484004",
+		"address":"302028, г.Орёл, Пролетарская гора, д.&nbsp;11, помещение&nbsp;18"
+	},
+	"soc":{
+		"vk":"https://vk.com/",
+		"fb":"https://www.facebook.com/",
+		"ok":"https://ok.ru/",
+		"inst":"https://www.instagram.com/"
+	},
+	"url-path-css": "/wp-content/themes/azbnbasetheme/css",
+	"url-path-css":"/css",
+	"url-path-img": "/wp-content/themes/azbnbasetheme/img",
+	"url-path-img":"/img",
+	"url-path-js": "/wp-content/themes/azbnbasetheme/js",
+	"url-path-js":"/js",
+	"url-path-plugins": "/wp-content/themes/azbnbasetheme/plugins",
+	"url-path-plugins":"/plugins",
+	"url-path-favicon": "/wp-content/themes/azbnbasetheme/favicon",
+	"url-path-favicon":"/favicon"
+}

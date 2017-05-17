@@ -1,0 +1,41 @@
+.social-block{
+
+}
+.social__{
+	&row{}
+	&item{
+		display: block;
+		border-radius: 50%;
+		/*border: 2px solid;
+		border-color: @b-social-bc;*/
+		width: 36px;
+		height: 36px;
+		transition: @trs-site;
+		svg{
+			fill: @b-social-bc;
+			transition: @trs-site;		
+		}
+		&:hover{
+			&[href^="https://vk.com/"]{
+				svg{fill:@color-vk;}
+			}
+			&[href^="https://www.facebook.com/"]{
+				svg{fill:@color-fb;}
+			}
+			&[href^="https://www.instagram.com/"]{
+				svg{fill:@color-inst;}
+			}
+		}
+	}
+}
+.social-wave{
+	.social__{
+		&row{
+			justify-content: flex-end;
+		}
+		&item{
+			width: 50px;
+			height: 50px;
+		}
+	}
+}

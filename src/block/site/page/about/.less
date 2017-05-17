@@ -1,0 +1,44 @@
+.about-page{}
+._ap__{
+	&row{
+		@media @media-device {
+			margin-top: -25px;
+			flex-wrap: wrap;
+		}
+	}
+	&cols.cols-6{
+		@media @media-device {
+			padding-top: 25px;
+		}
+		@media @media-size-sm-p {
+			.makeCols(12, 12);
+		}
+	}
+	&note{
+		@media @media-device {margin-bottom: 30px;}
+		@media @media-screen {
+			margin-bottom: 4vw;
+			padding: 0 7.5vw;
+		}
+	}
+	&title{
+		.calcFontSize(22, 32, 320, 1680);
+		.calcLineHeight(30, 40, 320, 1680);
+		font-weight: 700;
+		letter-spacing: 1px;
+		@media @media-screen {
+			padding-bottom: 2vw;
+			position: relative;
+			&::before{
+				position: absolute;
+				content: '';
+				top: calc(25% - 3px);
+				left: -30px;
+				width: 16vw;
+				height: 3px;
+				background-color: @red;
+				transform: translateX(-16vw);
+			}	
+		}
+	}
+}

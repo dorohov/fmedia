@@ -1,0 +1,38 @@
+<div class="content-block {{class}}" role="main">
+	<div class="container content-container">
+		[[azbntple 
+			tpl="/src/block/site/default/page-header/heading.html" 
+			prefix_header="page-header__"
+			prefix_block="_adp__"  
+			header="Реклама"
+		]]
+		<div class="row {{prefix_block}}row">
+			<div class="cols {{prefix_block}}cols">
+				<div class="{{prefix_block}}text-block text-block">
+					<h2>Позвоните нам или оставьте заявку на заказ рекламы!</h2>
+					<p>Мы предложим вам выгодные условия размещения рекламы<br> на наших радиостанциях.</p>
+				</div>
+				<div class="row {{prefix_block}}row-form">				
+					<div class="cols {{prefix_block}}cols-form cols-5">				
+						[[azbntple 
+							tpl="/src/block/site/default/form/fio-tel-comment.html"
+							heading_form="Заказать рекламу"
+							note_form="Наш менеджер скоро свяжется с вами."
+							prefix_form="form__"
+							class_form="block"
+							btn_name="Отправить заявку"
+						]] 
+					</div>
+					<div class="cols {{prefix_block}}cols-form cols-7">			
+						[[azbntple 
+							tpl="/src/block/site/default/wave/.html"
+							prefix_wave="wave__"
+							prefix_block="_adp__"
+						]]
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="{{prefix_block}}bg" style="background-image: url({{url-path-img}}/bg/bg-ad.png)"></div>
+</div>

@@ -1,0 +1,93 @@
+.contacts-block-index{
+	position: relative;
+}
+.contacts-page{}
+._cnp__{
+	&container{
+		@media @media-screen {
+		}		
+	}
+	&header-block{
+		margin-bottom: 15px;
+	}
+	&text{
+		font-weight: 100;
+		font-size: @b-fs - 2px;
+		line-height: @b-lh - 2px;
+		color: @black;
+		@media @media-device {margin-bottom: 25px;}
+		@media @media-screen {margin-bottom: 2.5vw;}
+	}
+	&panel{
+		z-index: 2;
+		position: relative;
+		background-color: @white;
+		@media @media-device {padding: 25px 0}
+		@media @media-screen {
+			padding: 3.8vw 4.3vw;
+			width: 45vw;	
+			min-height: ~"calc(100vh - @{navbar-top-screen} -  @{footer-screen})"; 
+		}
+		@media @media-size-xl{		
+			min-height: ~"calc(100vh - @{navbar-top-screen} - @{footer-screen-xxl})"; 
+		}
+		@media @media-size-xxl{		
+			min-height: ~"calc(100vh - @{navbar-top-screen-xxl} - @{footer-screen-xxl})"; 
+		}
+	}
+	&map{
+		width: 100%;
+		@media @media-size-xs-p {height: 350px;}
+		@media @media-size-xs-l {height: 300px;}
+		@media @media-size-sm {height: 500px;}
+		@media @media-screen {
+			position: absolute!important;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			height: 100%;
+		}
+	}
+	&row{
+		flex-wrap: wrap;
+		@media @media-device {margin-bottom: 30px;}
+		@media @media-screen {margin-bottom: 3vw}
+	}
+	&cols{
+		width: 100%;
+	}
+	&item{
+		position: relative;
+		margin-bottom: 25px;
+		@media @media-device {
+			padding-left: 50px;
+		}
+		@media @media-screen {
+			max-width: 400px;
+			line-height: @b-lh + 6px;
+			padding-left: 60px;
+		}
+		a{
+			&, &:focus, &:hover{color: @b-color;}
+			span{font-weight: 700;}
+		}
+	}
+	&phone{}
+	&item-icon{
+		position: absolute;
+		color: #ff9600;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		svg{display: block;}
+		@media @media-device {
+			width: 32px;
+			height: 32px;
+		}
+		@media @media-screen {
+			width: 46px;
+			height: 46px;
+		}
+	}
+}

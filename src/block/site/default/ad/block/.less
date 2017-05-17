@@ -1,0 +1,85 @@
+.ad-block{	
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(
+		120deg, 
+		#f3cb5f 0%,
+		#f3cb5f 33%,
+		#f6c43d 33%,
+		#f6c43d 100%
+	); 
+	@media @media-device {padding: 35px 0}
+	@media @media-screen {padding: 5vw 0}
+}
+._adb__{
+	&heading{
+		@media @media-device {margin-bottom: 35px}
+		@media @media-screen {margin-bottom: 5.5vw}
+		
+	}
+	&list{
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+	&row{
+		margin-top: -30px;
+		@media @media-device {margin-bottom: 40px;}
+		@media @media-screen {margin-bottom: 4.3vw;}
+		@media @media-size-sml {flex-wrap: wrap;}
+	}
+	&cols{
+		padding-top: 30px;
+		&.cols-2{
+			@media @media-size-xs-p {
+				.makeCols(6, 12);
+			}
+			@media @media-size-sml {
+				.makeCols(4, 12);
+			}
+			@media @media-size-xs-l {
+				.makeCols(4, 12);
+			}
+		}
+	}
+	&item{
+		display: block;
+		color: #010f3c;
+		text-align: center;
+
+	}
+	&preview{
+		color: #333366;
+		display: block;
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 10px;
+		transition: @trs-site;
+		._adb__item:hover &{
+			transform: scaleX(-1);
+			color: @red;
+		}
+	}
+	&name{
+		font-weight: 500;
+		.calcFontSize(20, 28, 320, 1680);
+		.calcLineHeight(26, 34, 320, 1680);
+	}
+	&btn-block{
+		text-align: center;
+	}
+	&bg{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: bottom right;
+		@media @media-device {display: none;}
+		@media @media-screen {
+			width: 19vw;
+			height: 18vw;
+			max-width: 350px;
+			max-height: 330px;
+		}
+	}
+}
