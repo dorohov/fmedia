@@ -71,6 +71,14 @@ ul{
 	&panel{
 		@media @media-screen{max-width: 960px;}
 	}
+	&row{
+		@media @media-device {flex-wrap: wrap;}
+	}
+	&cols{
+		&.cols-6{
+			@media @media-device {.makeCols(12, 12);}
+		}
+	}
 }
 .text-block{
 	div, p{
@@ -119,17 +127,6 @@ ul{
 				border: 0;				
 			}
 		}*/
-	}
-}
-.text-block-wave{
-	.calcFontSize(16, 23, 320, 1680);
-	.calcLineHeight(22, 36, 320, 1680);
-	h1, h2, h3, h4{
-		margin-bottom: 30px;
-		@media @media-screen {
-			padding-left: 3.5vw;
-			letter-spacing: 1px;			
-		}
 	}
 }
 .text-block blockquote,

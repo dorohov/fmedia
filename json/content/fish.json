@@ -1,8 +1,8 @@
 {
 	"contacts":{
 		"name":"F-media",
-		"domain":"polka.com.ru",
-		"domain_link":"http://polka.com.ru/",
+		"domain":"f-mediagroup.ru",
+		"domain_link":"http://f-mediagroup.ru/",
 		"agreement_page":"agreement",
 		"copyright":"F-media",
 		"email":"testF-Media@mail.ru",
@@ -20,14 +20,56 @@
 		"ok":"https://ok.ru/",
 		"inst":"https://www.instagram.com/"
 	},
-	"url-path-css": "/wp-content/themes/azbnbasetheme/css",
+	"wave":{
+		"europa":{
+			"vk":"https://vk.com/europaplusorel",
+			"fb":"https://www.facebook.com/groups/europaplusorel/",
+			"ok":"https://ok.ru/europaplus100.9",
+			"tw":"https://twitter.com/EuropaPlusOrel",
+			"inst":"https://www.instagram.com/europaplusorel100.9fm/",
+			"tel":"430-650",
+			"tel_num":"+74862430650",
+			"tel2":"8 900 488 3000",
+			"tel2_num":"+79004883000",
+			"sms_body":"таймс",
+			"sms_num":"5533"
+		},
+		"sport":{
+			"vk":"https://vk.com/sportfmorel",
+			"tel":"48-40-04",
+			"tel_num":"+74862484004"
+		},
+		"police":{
+			"tel":"484-004",
+			"tel_num":"+74862484004"
+		},
+		"seven":{
+			"vk":"https://vk.com/radio7orel"
+		},
+		"new":{
+			"vk":"https://vk.com/newradioclub",
+			"inst":"https://www.instagram.com/newradio107.8fm/",
+			"tel":"43-10-30",
+			"tel_num":"+74862431030",
+			"tel2":"48-40-04",
+			"tel2_num":"+74862484004",
+			"sms_body":"новоеорел",
+			"sms_num":"5533"
+		},
+		"new31":{
+			"vk":"https://vk.com/newradio31",
+			"tel":"25-73-73",
+			"tel_num":"+74722257373"
+		}
+	},
+	"url-path-css":"/wp-content/themes/azbnbasetheme/css",
 	"url-path-css":"/css",
-	"url-path-img": "/wp-content/themes/azbnbasetheme/img",
+	"url-path-img":"/wp-content/themes/azbnbasetheme/img",
 	"url-path-img":"/img",
-	"url-path-js": "/wp-content/themes/azbnbasetheme/js",
+	"url-path-js":"/wp-content/themes/azbnbasetheme/js",
 	"url-path-js":"/js",
-	"url-path-plugins": "/wp-content/themes/azbnbasetheme/plugins",
+	"url-path-plugins":"/wp-content/themes/azbnbasetheme/plugins",
 	"url-path-plugins":"/plugins",
-	"url-path-favicon": "/wp-content/themes/azbnbasetheme/favicon",
+	"url-path-favicon":"/wp-content/themes/azbnbasetheme/favicon",
 	"url-path-favicon":"/favicon"
 }

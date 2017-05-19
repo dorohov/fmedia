@@ -2,7 +2,18 @@
 
 }
 .social__{
-	&row{}
+	&row{
+		@media @media-size-xs {
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+	}
+	&cols{
+		@media @media-size-xs {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
 	&item{
 		display: block;
 		border-radius: 50%;
@@ -25,6 +36,12 @@
 			&[href^="https://www.instagram.com/"]{
 				svg{fill:@color-inst;}
 			}
+			&[href^="https://ok.ru/"]{
+				svg{fill:@color-ok;}
+			}
+			&[href^="https://twitter.com/"]{
+				svg{fill:@color-tw;}
+			}
 		}
 	}
 }
@@ -32,10 +49,13 @@
 	.social__{
 		&row{
 			justify-content: flex-end;
+			@media @media-size-xs-p{justify-content: center;}
 		}
 		&item{
-			width: 50px;
-			height: 50px;
+			@media @media-screen {
+				width: 50px;
+				height: 50px;
+			}
 		}
 	}
 }

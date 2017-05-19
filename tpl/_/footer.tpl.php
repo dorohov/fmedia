@@ -1,54 +1,72 @@
 		<?
-			$class = 'footer-site';
-			$prefix_block = 'footer__';
+			$class_footer = 'footer-site';
+			$prefix_footer = 'footer__';
+			/*
+				id = 1 "Главная",
+				id = 2 "Реклама",
+				id = 3 "О нас",
+				id = 4 "Новости",
+				id = 5 "Спецпроекты",
+				id = 6 "Контакты",
+				id = 7 "Новое Радио Орёл",
+				id = 8 "Европа Плюс Орёл",
+				id = 9 "Радио 7 Орёл",
+				id = 10 "Спорт FM Орёл",
+				id = 11 "Милицейская волна Орёл",
+				id = 12 "Новое радио Белгород",
+			*/
 		?>
-		<footer class="<?=$class;?>">	
-			<div class="container <?=$prefix_block;?>container">
-				<div class="row <?=$prefix_block;?>row">			
-					<div class="cols <?=$prefix_block;?>contacts-cols">
-						<?if (getContact('phone1');) {?>
-						<div class="<?=$prefix_block;?>contacts-item">
-							<a href="tel:<?=phone(getContact('phone1'));?>" class="<?=$prefix_block;?>phone"><?=getContact('phone1');?></a>
-						</div>
-						<?}?>
-						<?if (getContact('phone2');) {?>
-						<div class="<?=$prefix_block;?>contacts-item">
-							<a href="tel:<?=phone(getContact('phone2'));?>" class="<?=$prefix_block;?>phone"><?=getContact('phone2');?></a>
-						</div>
-						<?}?>
+		<footer class="<?=$class_footer;?>">	
+			<div class="container <?=$prefix_footer;?>container">
+				<div class="row <?=$prefix_footer;?>row">			
+					<div class="cols <?=$prefix_footer;?>copyright-cols">
+						<a href="<?=l(1);?>">
+							<span class="_logo"><svg class="icon-svg icon-logotip" role="img"><use xlink:href="<?=$this->path('img');?>/svg/sprite.svg#logotip"></use></svg></span>
+						</a>
 					</div>
-					<div class="cols <?=$prefix_block;?>soc-cols">
-						<?	
-							$this->tpl(
-								'_/social', 
-								array(
-									"class"=>"social-block",
-									"prefix_block" => "footer__social-",
-									"prefix_social" => "social__",
-								)
-							);
-						?>
+					<div class="cols <?=$prefix_footer;?>contacts-cols">
+						<div class="row <?=$prefix_footer;?>contacts-row">
+							<?if (getContact('phone1')) {?>
+							<div class="cols">						
+								<div class="<?=$prefix_block;?>contacts-item">
+									<a href="tel:<?=phone(getContact('phone1'));?>" class="<?=$prefix_block;?>phone"><?=getContact('phone1');?></a>
+								</div>
+							</div>
+							<?}?>
+							<?if (getContact('adr')) {?>
+							<div class="cols">						
+								<div class="<?=$prefix_footer;?>contacts-item">
+									<?=getContact('adr');?>
+								</div>
+							</div>
+							<?}?>
+							<?if (getContact('email')) {?>
+							<div class="cols">
+								<div class="<?=$prefix_footer;?>contacts-item">
+									<a href="mailto:<?=getContact('email');?>"><?=getContact('email');?></a>
+								</div>						
+							</div>
+							<?}?>
+						</div>	
 					</div>
-					<div class="cols <?=$prefix_block;?>dorohovdesign-cols">
-						<div class="row <?=$prefix_block;?>dorohovdesign__row">
+					<div class="cols <?=$prefix_footer;?>dorohovdesign-cols">
+						<div class="row <?=$prefix_footer;?>dorohovdesign__row">
 							<div class="cols">
 								<div>Создание сайта</div>
 							</div>
 							<div class="cols">
-								<div class="<?=$prefix_block;?>dorohovdesign__logo">
+								<div class="<?=$prefix_footer;?>dorohovdesign__logo">
 									<a href="http://www.dorohovdesign.ru/" target="_blank">
-										
-										<svg class="icon-svg icon-dorohovdesign" role="img">
-											<use xlink:href="<?=$this->path('img');?>/svg/sprite.svg#dorohovdesign"></use>
-										</svg>
+										<svg class="icon-svg icon-dorohovdesign" role="img"><use xlink:href="<?=$this->path('img');?>/svg/sprite.svg#dorohovdesign"></use></svg>
 									</a>
 								</div>	
 							</div>
 						</div>				 
-					</div>		
+					</div>	
 				</div>
 			</div>
 		</footer>
+
 		<? wp_footer(); ?>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,7 +75,6 @@
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-		<!-- <script src="<?=$this->path('js');?>/jquery.min.js" ></script> -->
 		<script src="<?=$this->path('js');?>/jquery-3.2.1.min.js" ></script>
 		<script src="<?=$this->path('js');?>/document-ready.js" ></script>
 
@@ -68,29 +85,58 @@
 		<script>svg4everybody();</script>
 
 		<?
-			//Для главной страницы 
+			//Для id = 1 "Главная" 
 			if($this->post['id'] == 1 ) {
-				$this->tpl('_/script/validationEngine', array());
-				$this->tpl('_/script/fancybox3', array());
+				$this->tpl('_/script/googleMap', array());
+				$this->tpl('_/script/owl', array());
 			}
-			//Для страницы о компании
 			if($this->post['id'] == 2 ) {
+				$this->tpl('_/script/validationEngine', array());
+				$this->tpl(
+					'_/modal/reviews', 
+					array(
+						"class_modals"=>"modal-reviews",
+						"prefix_modals" => "modal-reviews__",
+						"heading_modals" => "Выберите город",
+					)
+				);
+			}
+			//Для id = 3 "О нас"
+			if($this->post['id'] == 3 ) {
 				$this->tpl('_/script/fancybox3', array());
 			}
-			//Для страниц карточки товара
-			if( is_singular('catalog') ) {
-				$this->tpl('_/script/scrollbar', array());
-				$this->tpl('_/script/fancybox3', array());
-			}
-			//Для страницы реализованные проекты
-			if($this->post['id'] == 5) {
-				$this->tpl('_/script/fancybox3', array());
-			}
-			//Для страницы контакты
-			if($this->post['id'] == 7) {
+			//Для id = 6 "Контакты"
+			if($this->post['id'] == 6 ) {
 				$this->tpl('_/script/googleMap', array());
 			}
-
+			//Для id = 7 "Новое Радио Орёл"
+			if($this->post['id'] == 7 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для id = 8 "Европа Плюс Орёл",
+			if($this->post['id'] == 8 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для id = 9 "Радио 7 Орёл",
+			if($this->post['id'] == 9 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для id = 10 "Спорт FM Орёл",
+			if($this->post['id'] == 10 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для id = 11 "Милицейская волна Орёл",
+			if($this->post['id'] == 11 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для id = 12 "Новое радио Белгород",
+			if($this->post['id'] == 11 ) {
+				$this->tpl('_/script/validationEngine', array());
+			}
+			//Для страниц записи новости,
+			if(get_post_type($this->post['id']) == 'news') {
+				$this->tpl('_/script/fancybox3', array());
+			}
 			$this->tpl('_/script/metrics', array()); 
 		?> 
 	

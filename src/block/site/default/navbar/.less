@@ -77,10 +77,16 @@
 	&brand{
 		position: relative;
 		display: block;
+		&, &:hover, &:focus{color: @black;}
 		@media @media-device{
 			text-align: center;
-			img{margin: 0 auto}
+			._logo,img{margin: 0 auto}
 		} 
+		._logo{
+			display: block;
+			width: 180px;
+    		height: 45px;
+		}
 	}
 	//collapse
 	&collapse{
@@ -249,7 +255,7 @@
 		}
 	}
 	&tel{
-		&, &:focus, &:hover{color: @black;}
+		&,&[href^="tel:"],&[href^="tel:"]:hover, &:focus, &:hover{color: @black;}
 		font-weight: 300;
 		span{font-weight: 700;}
 	}

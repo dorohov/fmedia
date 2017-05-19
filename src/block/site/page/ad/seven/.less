@@ -1,4 +1,61 @@
-.ad-seven-page{}
+.ad-seven-page{
+	position: relative;}
 ._adsp__{
-	&{}
+	&cols{
+		&._form{
+			@media @media-size-md {.makeCols(5, 12);}		
+		}
+	}
+	&soc-block{
+		@media @media-size-sm {position: relative;}
+	}
+	&banner{
+		@media @media-size-xs{
+			img{
+				margin: 0 auto;
+			}
+		}
+		@media @media-size-xs-l{
+			img{
+				max-width: 200px;
+			}
+		}
+		@media @media-screen {
+			position: relative;
+			display: inline-block;
+			&::before{
+				content: '';
+				position: absolute;
+				top: ~"calc(33% - 2px)";
+				width: 18vw;
+				height: 2px;
+				background-color: @red;
+				right: 0;
+				transform: translateX(16vw);
+
+			}
+		}
+	}
+	&bg{
+		@media @media-screen {
+			width: 40vw;
+			height: 38vw;
+			max-width: 735px;
+			max-height: 700px;
+			&::before{
+				content: attr(data-text);
+				position: absolute;
+				z-index: 2;
+				border-bottom: 2px solid @red;
+				top: 62%;
+				transform: translateY(-50%);
+				.calcFontSize(18, 22, 320, 1680);
+				.calcLineHeight(24, 28, 320, 1680);
+				max-width: 31vw;
+				left: -17vw;
+				padding-right: 11vw;
+				padding-bottom: 10px;
+			}
+		}
+	}
 }

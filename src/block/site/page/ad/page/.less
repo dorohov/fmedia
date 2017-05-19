@@ -43,13 +43,18 @@
 		@media @media-device {margin-bottom: 35px;}
 		@media @media-screen {margin-bottom: 3vw;}
 	}
+	&row-form{
+		@media @media-device{margin-top: -30px; position: relative; z-index: 2}
+	}
 	&cols-form{
-		&.cols-5{			
+		@media @media-device{padding-top: 30px;}
+		&.cols-5{		
 			@media @media-size-sm-p {.makeCols(7, 12);}
 			@media @media-size-sm-l {.makeCols(5, 12);}
 			@media @media-screen {.makeCols(5.2, 12);}
 		}
-		&.cols-7{		
+		&.cols-7{	
+			@media @media-size-xs {order: -1}	 	
 			@media @media-size-sm-p {.makeCols(5, 12); order: -1}
 			@media @media-size-sm-l {.makeCols(7, 12);}	
 			@media @media-screen {.makeCols(6.8, 12);}

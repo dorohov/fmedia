@@ -15,8 +15,7 @@
 						</div>
 						<div class="cols {{navbar_prefix}}col-brand">
 							<a class="{{navbar_prefix}}brand" href="/">
-								<img src="{{url-path-img}}/default/logotip.jpg" alt="">
-								<!--<span class="_logo">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="logotip" ]]</span>-->
+								<span class="_logo">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="logotip" ]]</span>
 							</a>
 						</div>
 					</div>
@@ -63,12 +62,12 @@
 								</ul>
 							</div>
 							<div class="cols {{navbar_prefix}}tel-cols" >
-								<a href="{{contacts.phone_tel}}" class="{{navbar_prefix}}tel">
+								<a href="tel:{{contacts.phone_tel}}" class="{{navbar_prefix}}tel">
 									{{contacts.phone}}
 								</a>
 							</div>
 							<div class="cols {{navbar_prefix}}soc-cols" >
-								<a href="{{contacts.phone_tel}}" class="{{navbar_prefix}}soc">
+								<a href="{{soc.inst}}" class="{{navbar_prefix}}soc" target="_blank">
 									[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="inst" ]]
 								</a>
 							</div>

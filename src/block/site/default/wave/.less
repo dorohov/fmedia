@@ -10,6 +10,117 @@
 		padding-top: 20px;
 		img{margin: 0 auto}
 	}
+	&item{
+		display: block;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+		img{
+			//opacity: 0;
+		}
+	}
+	&logo-before{
+		display: block;
+		position: absolute;
+		left: -50%;
+		transform: translateX(-50%);
+		transition: @trs-site;
+		width: 100%;
+		.wave__item:hover &{
+			left:50%;
+		}
+	}
+	&logo-after{
+		display: block;
+		margin: 0 auto;
+		transition: @trs-site;
+		.wave__item:hover &{
+			transform: translateX(100%);
+		}
+	}
+	//
+	&ad-inner{
+		position: relative;
+		overflow: hidden;
+		z-index: 2;		
+	}
+	&ad-bg{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 1;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: right bottom;
+	}
+
+	&ad-row{
+		flex-wrap: wrap;
+		@media @media-device {margin-top: -50px;}
+		@media @media-screen {margin-top: -5vw;}
+	}
+	&ad-cols{
+		@media @media-device {
+			padding-top: 50px;
+			&._form{.makeCols(12, 12);}
+		}
+		@media @media-screen {padding-top: 5vw;}
+	}
+	&ad-soc-block{		
+		@media @media-size-xs-p{margin-bottom: 35px;}
+		@media @media-size-xs-l{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		@media @media-size-sm{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		@media @media-screen {margin-bottom: 3vw;}
+	}
+	&ad-ppt{
+		@media @media-screen {padding-left: 3.5vw;}
+		font-weight: 700;
+		a{
+			display: inline-block;
+			text-transform: uppercase;
+			text-decoration: underline;
+			.calcFontSize(16, 21, 320, 1680);
+			.calcLineHeight(22, 30, 320, 1680);
+			&:hover{
+				text-decoration: none;
+			}
+		}
+	}
+	&ad-text-block{
+		&:last-child{margin-bottom: 0}
+		@media @media-device {margin-bottom: 30px}
+		@media @media-screen {margin-bottom: 3vw;}
+		a[href^="whatsapp://"],
+		a[href^="tel:"],
+		a[href^="sms:"]{
+			&, &:focus, &:hover{color: @black; font-weight: 700}
+		}
+		.calcFontSize(16, 23, 320, 1680);
+		.calcLineHeight(22, 36, 320, 1680);
+		h1, h2, h3, h4{
+			margin-bottom: 30px;
+			@media @media-screen {
+				padding-left: 3.5vw;
+				letter-spacing: 1px;
+				background-color: @white;
+				position: relative;			
+			}
+		}
+	}
+	&ad-form{
+		@media @media-device{
+			max-width: 450px;
+			margin: 0 auto; 
+		}
+	}
 }
 //
 ._ap__{	
@@ -31,6 +142,7 @@
 		&:nth-of-type(2){order: 3}
 		&:nth-of-type(3){order: 2}
 		&:nth-of-type(4){order: 4}
+		&:nth-of-type(5){order: 5}
 		@media @media-screen {
 			padding-top: 3vw;
 		}
@@ -40,13 +152,16 @@
 ._cnp__{
 	&row-wave{}
 	&cols-wave{	
-		.makeCols(3, 12);	
+		.makeCols(2.4, 12);
+		//@media @media-screen {
+			img{max-height: 70px;}
+		//}	
 		@media @media-size-xs {
 			.makeCols(6, 12);
 		}
-		@media @media-size-mdl {
-			.makeCols(6, 12);
-		}		
+		/*@media @media-size-mdl {
+			.makeCols(2.4, 12);
+		}*/		
 	}
 }
 //
@@ -58,6 +173,7 @@
 		&:nth-of-type(2){order: 3}
 		&:nth-of-type(3){order: 4}
 		&:nth-of-type(4){order: 1}
+		&:nth-of-type(5){order: 5}
 		@media @media-size-sm-p {.makeCols(12, 12);}
 	}
 }
