@@ -1,6 +1,6 @@
 <?	
 	/*$this->tpl(
-		'_/form/fio-tel-email', 
+		'_/form/fio-tel-comment', 
 		array(
 			"class_form"=>"block _adspp__form wave__ad-form",
 			"prefix_form" => "form__",
@@ -25,12 +25,12 @@
 		</div>
 		<div class="cols <?=$param["prefix_form"];?>cols">
 			<div class="<?=$param["prefix_form"];?>item">
-				<input type="email" class="<?=$param["prefix_form"];?>control form-control validate[required,custom[email]]" id="f[email]" name="f[email]" placeholder="Ваш E-mail"> 
+				<input type="tel" class="<?=$param["prefix_form"];?>control form-control validate[required,custom[phone]]" id="f[tel]" name="f[Телефон]" placeholder="Ваш номер телефона"> 
 			</div>	
 		</div>
 		<div class="cols <?=$param["prefix_form"];?>cols">
 			<div class="<?=$param["prefix_form"];?>item">
-				<input type="tel" class="<?=$param["prefix_form"];?>control form-control validate[required,custom[phone]]" id="f[tel]" name="f[Телефон]" placeholder="Ваш номер телефона"> 
+				<input type="text" class="<?=$param["prefix_form"];?>control form-control validate[required]" id="f[note]" name="f[Вопрос]" placeholder="Ваш комментарий"> 
 			</div>	
 		</div>
 		<div class="cols <?=$param["prefix_form"];?>cols full material-cols">
