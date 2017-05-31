@@ -1,0 +1,32 @@
+.page-header-block{
+	@media @media-device{margin-bottom: 40px}
+	@media @media-screen{margin-bottom: 3.3vw;}
+}
+.page-header__{
+	&row{
+		margin-top: -15px;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&cols{
+		padding-top: 15px;
+	}
+	&code{
+		font-weight: 700;
+		.calcFontSize(18, 24, 320, 1680);
+		.calcLineHeight(24, 30, 320, 1680);
+		margin-bottom: 10px;
+	}
+	&heading{
+		font-family: @bague;
+		.calcFontSize(26, 72, 320, 1680);
+		.calcLineHeight(30, 76, 320, 1680);
+		margin-bottom: 0;
+		color: @black;
+	}
+}
+.index-header-block{
+	.calcFontSize(26, 72, 320, 1680);
+	.calcLineHeight(20, 62, 320, 1680);
+}

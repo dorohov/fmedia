@@ -1,0 +1,28 @@
+.audio__{
+	&item{
+		border: 1px solid @white10;
+		background-color: @white10;
+		@media @media-device {margin-bottom: 15px}
+		@media @media-screen {margin-bottom: 1.4vw}
+	}
+	&preview{
+		padding: 20px;
+		img{margin: 0 auto}
+	}
+	&track{
+		audio{
+			display: block;
+			width: 100%;
+		}
+	}
+	&heading{
+		font-weight: 700;
+		.calcFontSize(22, 28, 320, 1680);
+		.calcLineHeight(26, 32, 320, 1680);
+		@media @media-screen {padding-left: 30px;}
+	}
+	&note{
+		.calcFontSize(16, 22, 320, 1680);
+		.calcLineHeight(22, 30, 320, 1680);
+	}
+}

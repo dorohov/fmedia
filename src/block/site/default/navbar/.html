@@ -1,0 +1,92 @@
+ <nav class="navbar {{class}} scroll">
+ 	<div class="container {{navbar_prefix}}container">
+ 		<div class="row {{navbar_prefix}}row">
+ 			<div class="cols {{navbar_prefix}}col-header"> 				
+				<div class="{{navbar_prefix}}header">
+					<div class="row {{navbar_prefix}}row-header ">
+						<div class="cols {{navbar_prefix}}col-hamburger">
+							<div class="{{navbar_prefix}}hamburger">
+								<button class="{{navbar_prefix}}hamburger-btn hamburger hamburger--arrow" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false" data-toggle-nav=".navbar-site" data-body="html" data-collapse-nav=".navbar__collapse">
+									<span class="hamburger-box">
+										<span class="hamburger-inner"></span>
+									</span>
+								</button>
+							</div>
+						</div>
+						<div class="cols {{navbar_prefix}}col-brand">
+							<a class="{{navbar_prefix}}brand" href="/">
+								<span class="_logo">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="logotip" ]]</span>
+							</a>
+						</div>
+					</div>
+				</div>
+ 			</div>
+ 			<div class="cols {{navbar_prefix}}col-collapse">
+				<div class="{{navbar_prefix}}collapse" >
+					<div class="{{navbar_prefix}}collapse-inner">
+						<div class="row {{navbar_prefix}}collapse-row" >
+							<div class="cols {{navbar_prefix}}nav-cols" >
+								<ul class="{{navbar_prefix}}nav">		 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/" class="{{navbar_prefix}}nav-link">
+										Главная
+										<span class="{{navbar_prefix}}nav-line"></span>
+									</a> 
+									</li>		 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/ad.html" class="{{navbar_prefix}}nav-link">
+											Реклама
+											<span class="{{navbar_prefix}}nav-line"></span>
+										</a> 
+									</li>		 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/about.html" class="{{navbar_prefix}}nav-link">О нас
+											<span class="{{navbar_prefix}}nav-line"></span>
+										</a> 
+									</li>	 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/news.html" class="{{navbar_prefix}}nav-link">Новости
+											<span class="{{navbar_prefix}}nav-line"></span>
+										</a> 
+									</li>	 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/projects.html" class="{{navbar_prefix}}nav-link">Спецпроекты
+											<span class="{{navbar_prefix}}nav-line"></span>
+										</a> 
+									</li>	 	
+									<li class="{{navbar_prefix}}nav-item">
+										<a href="/contacts.html" class="{{navbar_prefix}}nav-link">Контакты
+											<span class="{{navbar_prefix}}nav-line"></span>
+										</a> 
+									</li>
+								</ul>
+							</div>
+							<div class="cols {{navbar_prefix}}tel-cols" >
+								<a href="tel:{{contacts.phone_tel}}" class="{{navbar_prefix}}tel">
+									{{contacts.phone}}
+								</a>
+							</div>
+							<div class="cols {{navbar_prefix}}soc-cols" >
+								<a href="{{soc.inst}}" class="{{navbar_prefix}}soc" target="_blank">
+									[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="inst" ]]
+								</a>
+							</div>
+							<div class="cols {{navbar_prefix}}select-cols" >
+								<button type="button" class="btn-site {{navbar_prefix}}btn-select" data-toggle="modal" data-target="#modal-location">
+									<span class="icon">[[azbntple tpl="/src/block/site/default/svg-sprite/.html" icon-name="arrows-down" ]]</span>
+									Орёл
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</nav>
+[[azbntple 
+	tpl="/src/block/site/default/modals/location.html"
+	heading_modals="Выберите город"
+	prefix_modals="modal-location__"
+	class_modals="modal-location"
+]] 

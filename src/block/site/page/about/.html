@@ -1,0 +1,27 @@
+<div class="content-block {{class}}" role="main">
+	<div class="container content-container">
+		[[azbntple 
+			tpl="/src/block/site/default/page-header/heading.html" 
+			prefix_header="page-header__"
+			prefix_block="_ap__"  
+			header="О нас"
+		]]
+		<div class="row {{prefix_block}}row">
+			<div class="cols {{prefix_block}}cols cols-6">
+				<a class="fancybox-preview img" href="{{url-path-img}}/temp/about-item-lg.jpg" data-fancybox="about-gallery">
+					<img src="{{url-path-img}}/temp/about-item.jpg" alt="">
+				</a>
+			</div>
+			<div class="cols {{prefix_block}}cols cols-6">
+				<div class="{{prefix_block}}note">
+					<div class="{{prefix_block}}title">Страница находится в&nbsp;разработке</div>
+				</div>				
+				[[azbntple 
+					tpl="/src/block/site/default/wave/.html"
+					prefix_wave="wave__"
+					prefix_block="_ap__"
+				]]
+			</div>
+		</div>
+	</div>
+</div>

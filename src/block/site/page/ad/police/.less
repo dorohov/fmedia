@@ -1,0 +1,86 @@
+.ad-police-page{
+	position: relative;
+}
+._adpp__{
+	&inner{		
+		@media @media-size-sm {padding-top: 50px;}
+		@media @media-screen {padding-top: 5vw;}
+	}
+	&bg{
+		@media @media-screen-lg {
+			width: 48vw;
+			height: 46vw;
+			max-width: 890px;
+			max-height: 850px;
+		}
+	}
+	&row{}
+	&cols{
+		@media @media-device{
+			&._form{order: 1; .makeCols(12, 12);}
+		}
+		@media @media-size-xs-p{
+			//&._banner{padding-top: 0}
+		}
+		@media @media-size-sm{
+			&._banner{.makeCols(12, 12);}
+			&.cols-6{.makeCols(12, 12);}
+		}
+		@media @media-size-md{
+			&._banner{.makeCols(12, 12);}
+			&._text{.makeCols(8, 12);}
+			&._form{order: 1}
+		}
+	}	
+	&logotip{	
+		@media @media-size-xs-p {
+			transform: translateY(-15%);
+			img{margin: 0 auto}
+		}
+		@media @media-size-xs-l{
+			position: absolute;
+			top: -1.5vw;
+			left: 0vw;
+			width: 22vw;
+			max-width: 390px;		
+		}
+		@media @media-notsmart{
+			position: absolute;
+			top: -1.5vw;
+			left: 0vw;
+			width: 22vw;
+			max-width: 390px;		
+		}
+	}
+	&banner{
+		@media @media-size-xs-l{
+			img{
+				max-width: 300px;
+				margin: 0 auto;
+			}
+		}
+		@media @media-size-sm{
+			img{
+				max-width: 500px;
+				margin: 0 auto;
+			}
+		}
+		@media @media-size-md{
+			img{
+				max-width: 500px;
+				margin: 0 auto;
+			}
+		}
+	}
+	&soc-block{
+		@media @media-size-md{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+	&text-block{}
+	&form{
+		max-width: 535px;
+	}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-RU"> 
+	<head>
+		[[azbntple 
+			tpl="/src/block/site/default/head/.html" 
+			title=" "
+			description=" "
+		]] 		
+	</head>
+	<body>	
+		[[azbntple 
+			tpl="/src/block/site/default/navbar/.html"
+			class="navbar-site scroll"
+			navbar_prefix="navbar__" 
+		]] 
+		[[azbntple 
+			tpl="/src/block/site/page/index/header/.html"
+			class="header-index-block"
+			prefix_block="_hib__"  
+		]] 
+		[[azbntple
+			tpl="/src/block/site/page/index/clients/.html"
+			class="clients-index-block"
+			prefix_block="_cib__"
+			heading_block="Нам доверяют"
+		]]
+		[[azbntple
+		 	tpl="/src/block/site/page/news/index/.html"
+		 	class="news-index-block"
+		 	prefix_block="_nib__"
+			heading_block="Новости"
+		]] 
+		[[azbntple
+			tpl="/src/block/site/page/contacts/index.html"
+			class="contacts-block-index"
+			prefix_block="_cnp__"
+		]]
+		[[azbntple 
+			tpl="/src/block/site/default/footer/.html" 
+			class="footer-site"
+			prefix_block="footer__" 
+		]]
+
+		[[azbntple tpl="/src/block/site/default/script/script.html" ]] 
+		[[azbntple tpl="/src/block/site/default/script/googleMap.html" ]] 
+		[[azbntple tpl="/src/block/site/default/script/owl.html" ]] 
+	</body>
+</html>

@@ -1,0 +1,43 @@
+.ad-sport-page{
+	position: relative;
+}
+._adspp__{
+	&cols{
+		&._form{
+			@media @media-size-md {.makeCols(5, 12);}		
+		}
+	}
+	&soc-block{
+		@media @media-size-sm {position: relative;}
+	}
+	&banner{
+		@media @media-size-xs-l{
+			img{
+				max-width: 300px;
+				margin: 0 auto;
+			}
+		}
+	}
+	&bg{
+		@media @media-screen {
+			width: 48vw;
+			height: 46vw;
+			max-width: 940px;
+			max-height: 890px;
+			&::before{
+				content: attr(data-text);
+				position: absolute;
+				z-index: 2;
+				border-bottom: 2px solid @red;
+				top: 50%;
+				transform: translateY(-50%);
+				.calcFontSize(18, 22, 320, 1680);
+				.calcLineHeight(24, 28, 320, 1680);
+				max-width: 27vw;
+				left: -5vw;
+				padding-right: 6vw;
+				padding-bottom: 10px;
+			}
+		}
+	}
+}

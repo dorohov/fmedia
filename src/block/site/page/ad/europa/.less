@@ -1,0 +1,52 @@
+.ad-europa-page{}
+._adep__{
+	&logotip{
+		@media @media-size-xs-p {
+			transform: translateY(-15%);
+			img{margin: 0 auto}
+		}
+		@media @media-size-xs-l {
+			position: absolute;
+			top: -3vw;
+			left: -4vw;
+			width: 33vw;
+			max-width: 600px;	
+
+		}
+		@media @media-notsmart{
+			position: absolute;
+			top: -3vw;
+			left: -4vw;
+			width: 33vw;
+			max-width: 600px;			
+		}
+	}
+	&row{}
+	&cols{
+		&.cols-8{
+			@media @media-size-sm-p {.makeCols(12, 12);}
+			@media @media-size-sm-l {.makeCols(7, 12);}
+			@media @media-size-md {.makeCols(7, 12);}
+		}
+		&.cols-4{
+			@media @media-size-sm-p {.makeCols(12, 12);}
+			@media @media-size-sm-l {.makeCols(5, 12);}
+			@media @media-size-md {.makeCols(5, 12);}
+		}
+	}
+	&social-row{
+		@media @media-screen {
+			margin-left: -20px;
+			margin-right: -20px;			
+		}
+	}
+	&social-cols{
+		@media @media-screen {
+			padding-left: 20px;
+			padding-right: 20px;			
+		}
+	}
+	&text-block{
+		@media @media-screen {max-width: 1000px;}
+	}
+}
