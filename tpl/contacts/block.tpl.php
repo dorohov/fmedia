@@ -9,6 +9,19 @@ $contact__phone1 = getContact('phone1', $__parent);
 $contact__phone2 = getContact('phone2', $__parent);
 $contact__phone3 = getContact('phone3', $__parent);
 
+
+$ad_page = get_field('ad_page', $__parent);
+
+//var_dump($ad_page );
+
+$radios = $this->getItems(array(
+	'post_type' => 'page',
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order'   => 'ASC',
+	'post_parent' => $ad_page->ID,
+));
+
 ?>
 
 <div class="<?=$param["class"];?>">
@@ -62,23 +75,48 @@ $contact__phone3 = getContact('phone3', $__parent);
 				</div>
 				<?}?>
 			</div>
-			<?if($this->post['id'] == 6 ) {
-				/*
-					сюда выводим логотипы и ссылки на радиостанции соответствующего города.
-				*/				
-					$prefix_wave="wave__";
-					$prefix_block="_cnp__";
+			<?
+			
+			$prefix_wave="wave__";
+			$prefix_block="_cnp__";
+			
+			if(count($radios)){
 				?>
-				<div class="<?=$param["prefix_wave"];?>block <?=$param["prefix_block"];?>wave">
-					<div class="<?=$param["prefix_wave"];?>row <?=$param["prefix_block"];?>row-wave row">
-						<div class="<?=$param["prefix_wave"];?>cols <?=$param["prefix_block"];?>cols-wave cols">
-							<a href="<?/*ссылка*/?>">
-								<img src="<?/*уменьшенная копия логотипа со страницы радиостанции*/?>" alt="">
+				
+				<div class="<?=$prefix_wave;?>block <?=$prefix_block;?>wave">
+					<div class="<?=$prefix_wave;?>row <?=$prefix_block;?>row-wave row">
+				
+				<?
+				foreach($radios as $p) {
+				
+				$img_sm = $this->Imgs->postImg($p->ID, '257x125');
+				
+				?>
+				
+						
+						<div class="<?=$prefix_wave;?>cols <?=$prefix_block;?>cols-wave cols">
+							<a href="<?=l($p->ID);?>" class="<?=$prefix_wave;?>item">	
+								<span class="<?=$prefix_wave;?>logo-before"><img src="<?=$img_sm;?>" alt=""></span>
+								<span class="<?=$prefix_wave;?>logo-after"><img src="<?=$img_sm;?>" alt=""></span>
 							</a>
 						</div>
+						
+				
+				<?
+				}
+				?>
+				
 					</div>
 				</div>
-			<?}?>
+				
+				<?
+			}
+			
+			?>
+				
+			<?
+			
+			?>
 		</div>		
 	</div>
 	<div id="map-google-office" class="<?=$param["prefix_block"];?>map"></div>
