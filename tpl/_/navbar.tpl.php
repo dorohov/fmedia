@@ -1,24 +1,30 @@
 <?
-	$class_navbar = 'navbar-site scroll';
+	$class_navbar = 'navbar-site ';
+	
+	//if($this->getMeta($this->post['id'], 'post_function') == 'mainpage') {
+	//	$class_navbar = $class_navbar . 'scroll';
+	//}
+	
 	$prefix_navbar = 'navbar__';
 
 	$class_modals = 'modal-location';
 	$prefix_modals = 'modal-location__';
-	/*
-		id = 1 "Главная",
-		id = 2 "Реклама",
-		id = 3 "О нас",
-		id = 4 "Новости",
-		id = 5 "Спецпроекты",
-		id = 6 "Контакты",
-		id = 7 "Новое Радио Орёл",
-		id = 8 "Европа Плюс Орёл",
-		id = 9 "Радио 7 Орёл",
-		id = 10 "Спорт FM Орёл",
-		id = 11 "Милицейская волна Орёл",
-		id = 12 "Новое радио Белгород",
-		id = 13 "Персональные данные"
-	*/
+	
+	$__parent = getParents($this->post['id']);
+	
+	if(get_post_type($this->post['id']) == 'post' || $this->post['id'] == 63 || is_404()) {
+		$__parent = 1;
+	}
+	
+	$contact__inst = getContact('inst', $__parent);
+	$contact__phone1 = getContact('phone1', $__parent);
+	
+	if($__parent == 1) {
+		$menu_id = 2;
+	} else {
+		$menu_id = 4;
+	}
+	
 ?>
 
  <nav class="navbar <?=$class_navbar;?>">
@@ -50,56 +56,36 @@
 						<div class="row <?=$prefix_navbar;?>collapse-row" >
 							<div class="cols <?=$prefix_navbar;?>nav-cols" >
 								<ul class="<?=$prefix_navbar;?>nav">
+									
 									<?
-										if(!is_front_page()) {
-									?>		 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(1);?>" class="<?=$prefix_navbar;?>nav-link">
-										<?=t(1);?>
-										<span class="<?=$prefix_navbar;?>nav-line"></span>
-										</a> 
-									</li>	
-									<?
-									}
-									?>	 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(2);?>" class="<?=$prefix_navbar;?>nav-link">
-											<?=t(2);?>
-											<span class="<?=$prefix_navbar;?>nav-line"></span>
-										</a> 
-									</li>		 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(3);?>" class="<?=$prefix_navbar;?>nav-link">
-											<?=t(3);?>
-											<span class="<?=$prefix_navbar;?>nav-line"></span>
-										</a> 
-									</li>	 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(4);?>" class="<?=$prefix_navbar;?>nav-link">
-											<?=t(4);?>
-											<span class="<?=$prefix_navbar;?>nav-line"></span>
-										</a> 
-									</li>	 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(5);?>" class="<?=$prefix_navbar;?>nav-link">
-											<?=t(5);?>
-											<span class="<?=$prefix_navbar;?>nav-line"></span>
-										</a> 
-									</li>	 	
-									<li class="<?=$prefix_navbar;?>nav-item">
-										<a href="<?=l(6);?>" class="<?=$prefix_navbar;?>nav-link">
-											<?=t(6);?>
+									$menu_items = $this->getMenu($menu_id);
+									//__theme_ed($menu_items);
+									if(count($menu_items)) {
+										foreach($menu_items as $_item) {
+											
+											//if(!is_front_page()) {}
+											if(($__parent != $this->post['id']) || ($__parent == $this->post['id'] && $this->post['id'] != $_item->object_id)) {
+									?>
+									<li class="<?=$prefix_navbar;?>nav-item <?if($this->post['id'] == $_item->object_id){?>is--active<?}?> ">
+										<a href="<?=$_item->url;?>" class="<?=$prefix_navbar;?>nav-link">
+											<?=$_item->title;?>
 											<span class="<?=$prefix_navbar;?>nav-line"></span>
 										</a> 
 									</li>
+									<?
+											}
+										}
+									}
+									?>
+									
 								</ul>
 							</div>
 							<div class="cols <?=$prefix_navbar;?>tel-cols" >
-								<a href="tel:<?=phone(getContact('phone1'));?>" class="<?=$prefix_navbar;?>tel"><?=getContact('phone1');?></a>
+								<a href="tel:<?=phone($contact__phone1);?>" class="<?=$prefix_navbar;?>tel"><?=$contact__phone1;?></a>
 							</div>
-							<? if(getContact('inst')){?>
+							<? if($contact__inst != ''){?>
 							<div class="cols <?=$prefix_navbar;?>soc-cols" >
-								<a href="<?=getContact('inst');?>" class="<?=$prefix_navbar;?>soc" target="_blank">
+								<a href="<?=$contact__inst;?>" class="<?=$prefix_navbar;?>soc" target="_blank">
 									<svg class="icon-svg icon-inst" role="img"><use xlink:href="<?=$this->path('img');?>/svg/sprite.svg#inst"></use></svg>
 								</a>
 							</div>
@@ -107,7 +93,7 @@
 							<div class="cols <?=$prefix_navbar;?>select-cols" >
 								<button type="button" class="btn-site <?=$prefix_navbar;?>btn-select" data-toggle="modal" data-target="#modal-location">
 									<span class="icon"><svg class="icon-svg icon-arrows-down" role="img"><use xlink:href="<?=$this->path('img');?>/svg/sprite.svg#arrows-down"></use></svg></span>
-									Орёл
+									<?=t($__parent);?>
 								</button>
 							</div>
 						</div>
@@ -128,9 +114,20 @@
 				<h3 class="modal-title <?=$prefix_modals;?>title">Выберите город</h3>
 				<div class="modal-note <?=$prefix_modals;?>note">		
 					<ul class="<?=$prefix_modals;?>list">
-						<li><a href="#">Белгород</a></li>
-						<li class="is--active"><a href="#">Орёл</a></li>
-						<li><a href="#">Белгород</a></li>
+						
+						<?
+						$city_items = $this->getMenu(5);
+						if(count($city_items)) {
+							foreach($city_items as $_item) {
+						?>
+						
+						<li class=" <?if($__parent == $_item->object_id || $this->post['id'] == $_item->object_id){?>is--active<?}?> " ><a href="<?=$_item->url;?>"><?=$_item->title;?></a></li>
+						
+						<?
+							}
+						}
+						?>
+						
 					</ul>
 				</div>
 			</div> 
