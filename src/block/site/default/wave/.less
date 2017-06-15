@@ -152,16 +152,17 @@
 ._cnp__{
 	&row-wave{}
 	&cols-wave{	
-		.makeCols(2.4, 12);
+		.makeCols(4, 12);
 		//@media @media-screen {
-			img{max-height: 70px;}
+			img{max-height: 100px;}
 		//}	
 		@media @media-size-xs {
 			.makeCols(6, 12);
 		}
-		/*@media @media-size-mdl {
+		@media @media-size-mdl {
 			.makeCols(2.4, 12);
-		}*/		
+			img{max-height: 70px;}
+		}	
 	}
 }
 //

@@ -51,7 +51,7 @@
 	&row{
 		flex-wrap: wrap;
 		@media @media-device {margin-bottom: 30px;}
-		@media @media-screen {margin-bottom: 3vw}
+		@media @media-screen {margin-bottom: 1vw}
 	}
 	&cols{
 		width: 100%;
@@ -66,6 +66,11 @@
 			max-width: 400px;
 			line-height: @b-lh + 6px;
 			padding-left: 60px;
+		}
+		@media @media-size-mdl {
+			margin-bottom: 15px;
+			font-size: 14px;
+			line-height: 20px;
 		}
 		a{
 			&, &:focus, &:hover{color: @b-color;}
@@ -88,6 +93,10 @@
 		@media @media-screen {
 			width: 46px;
 			height: 46px;
+		}
+		@media @media-size-mdl {
+			width: 32px;
+			height: 32px;
 		}
 	}
 }
