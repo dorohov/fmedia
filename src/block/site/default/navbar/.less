@@ -40,7 +40,7 @@
 		line-height: @navbar-lh - 2px;
 	}
 	@media @media-size-xxl {
-		padding-top: 65px;
+		padding-top: 60px;
 		padding-bottom: 55px;
 	}
 }
@@ -55,12 +55,12 @@
 	}
 	&col-header{
 		@media @media-device{width: 100%}
-		@media @media-screen{width: 19%;}
+		@media @media-screen{width: 16%;}
 		@media @media-size-lg{width: 15%}
 	}
 	&col-collapse{
 		@media @media-device{width: 0; padding: 0}
-		@media @media-screen{width: 81%;}
+		@media @media-screen{width: 84%;}
 		@media @media-size-lg{width: 85%}
 	}
 	//header
@@ -86,6 +86,10 @@
 			display: block;
 			width: 180px;
     		height: 45px;
+    		@media @media-size-xxl {
+				width: 200px;
+				height: 55px;
+    		}
 		}
 	}
 	//collapse
@@ -188,7 +192,11 @@
 		}
 		@media @media-screen-lg{
 			border-bottom: 1px solid fadeout(@navbar-active-bg, 80%);
-		}    	
+		}   
+		@media @media-size-xxl{
+			font-size: @navbar-fs + 4px;
+			line-height: @navbar-lh + 4px;
+		} 	
 	}
 	&nav-item{
 		@media @media-device{
@@ -258,6 +266,10 @@
 		&,&[href^="tel:"],&[href^="tel:"]:hover, &:focus, &:hover{color: @black;}
 		font-weight: 300;
 		span{font-weight: 700;}
+		@media @media-size-xxl{
+			font-size: @navbar-fs + 6px;
+			line-height: @navbar-lh + 6px;
+		}
 	}
 	&soc{
 		width: 27px;
@@ -269,6 +281,10 @@
 		font-weight: 700;
 		color: @red;
 		padding-left: 20px;
+		@media @media-size-xxl{
+			font-size: @navbar-fs + 6px;
+			line-height: @navbar-lh + 6px;
+		}
 		.icon{
 			position: absolute;
 			top: 50%;

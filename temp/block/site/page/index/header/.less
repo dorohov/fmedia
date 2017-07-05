@@ -7,58 +7,58 @@
 		@white10 28%,
 		@white10 100%
 	); 
+	@media @media-size-xxl {
+		min-height: ~"calc(100vh - @{navbar-top-screen})";
+	}
 }
 ._hib__{
 	&inner{
 		overflow: hidden;		
+		@media @media-device {padding: 25px 0;}
+		@media @media-screen {padding: 2.5vw 0;}
 	}
-	&container{		
-		position: relative;
-		@media @media-device {
-			padding-top: 25px;
-			padding-bottom: 25px;
-		}
-		@media @media-screen {
-			padding-top: 2.5vw;
-			padding-bottom: 2.5vw;
-			min-height: ~"calc(100vh - @{navbar-top-screen})";
-		}
-		@media @media-size-xxl {
-			min-height: ~"calc(100vh - @{navbar-top-screen-xxl})";
-		}
+	&bg{
+		position: absolute;
+		width: 36vw;
+		height: 46vw;
+		max-width: 650px;
+		max-height: 840px;
+	    z-index: 101;
+		right: 0;
+		background-position: center bottom;
+		background-size: contain;
+		background-repeat: no-repeat;
+		bottom: 0;
+		@media @media-device {display: none;}
+		@media @media-size-mdl {width: 30vw;}
 	}
 	&heading{
-		color: fadeout(@black, 95%);
-		.calcFontSize(50, 180, 320, 1680);
-		.calcLineHeight(40, 160, 320, 1680);
-	    position: absolute;
-    	top: 20px;
+		color: @red;
+		.calcFontSize(50, 220, 320, 1680);
+		.calcLineHeight(40, 180, 320, 1680);
+		@media @media-device {margin-bottom: 35px; text-align: center;}
+		@media @media-screen {margin-bottom: 4.0vw;}
 	}
 	&carousel{
 		display: flex;
-		align-items: center;
 		@media @media-device {flex-wrap: wrap;}
 		@media @media-screen {
-			position: absolute;
-			top: 50%;
-			left: 15px;
-			right: 15px;
-			transform: translateY(-50%);
-			height: inherit;
+			max-width: 1040px;
+			width: 60vw;
 		}
 	}	
 	&carousel-indicators{
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		.calcFontSize(21, 40, 320, 1680);
-		.calcLineHeight(21, 40, 320, 1680);
+		.calcFontSize(21, 29, 320, 1680);
+		.calcLineHeight(21, 29, 320, 1680);
 		padding-right: 20px;
 		.carousel &{
 			@media @media-size-xs-p{.makeCols(12, 12); margin-bottom: 20px;}
 			@media @media-size-xs-l{.makeCols(7, 12);} 
 			@media @media-size-sml{.makeCols(7, 12);} 
-			@media @media-screen {.makeCols(4, 12);}
+			@media @media-screen {.makeCols(6, 12);}
 		}
 		@media @media-size-xs{padding-left: 55px;} 
 		@media @media-size-sm{padding-left: 60px;} 
@@ -73,7 +73,6 @@
 			display: flex;
 			align-items: center;
 			&:last-child{margin-bottom: 0}
-			@media @media-size-xxl{margin-bottom: 30px} 
 			&::before{
 				content: attr(data-wave);
 				position: absolute;
@@ -86,9 +85,6 @@
 				transition: @trs-site;
 				opacity: 0;
 				transform-origin: 0 center;
-				@media @media-size-xxl {
-					font-size: @b-fs + 4;
-				}
 			}
 			&::after{
 				content: '';
@@ -103,7 +99,7 @@
 				transition: @trs-site;
 				opacity: 0;
 				transform-origin: 0 center;
-				margin-left: 40px;
+				margin-left: 15px;
 				@media @media-device {display: none;}
 			}
 			span{
@@ -118,7 +114,7 @@
 					transform: scale(0);
 					left: 0;
 					background-color: @red;
-					width: 32px;
+					width: 22px;
 					height: 3px;
 					transition: @trs-site;
 					opacity: 0;
@@ -127,7 +123,7 @@
 			}
 			&.active{
 				cursor: default;
-			    padding-left: 50px;
+			    padding-left: 40px;
 				font-weight: 700;
 				&::after{
 					transform: scale(1);
@@ -151,7 +147,7 @@
 			@media @media-size-xs-p{.makeCols(12, 12);} 
 			@media @media-size-xs-l{.makeCols(5, 12);} 
 			@media @media-size-sml{.makeCols(5, 12);} 
-			@media @media-screen {.makeCols(8, 12);}
+			@media @media-screen {.makeCols(6, 12);}
 		}	
 	}	
 	&carousel-item{
