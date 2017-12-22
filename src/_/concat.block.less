@@ -1007,6 +1007,10 @@
 			transition: @trs-site;	
 			z-index: 200;
 		}
+		&.is--ny{
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
 	}
 	@media @media-size-mdl{
 		font-size: @navbar-fs - 2px;
@@ -1015,6 +1019,10 @@
 	@media @media-size-xxl {
 		padding-top: 60px;
 		padding-bottom: 55px;
+		&.is--ny{
+			padding-top: 30px;
+   			padding-bottom: 40px;
+		}
 	}
 }
 .navbar__{
@@ -1059,9 +1067,21 @@
 			display: block;
 			width: 180px;
     		height: 45px;
+			.navbar-site.is--ny &{
+				width: 160px;
+				height: 80px;
+				@media @media-device {
+					height: 45px;
+					width: 90px;
+				}
+			}
     		@media @media-size-xxl {
 				width: 200px;
 				height: 55px;
+				.navbar-site.is--ny &{
+					width: 200px;
+					height: 100px;
+				}
     		}
 		}
 	}
