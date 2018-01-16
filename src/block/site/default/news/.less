@@ -60,6 +60,31 @@
 			right: 0;
 		}
 	}
+	&gallery{
+		margin-bottom: 35px;
+		@media @media-screen {
+			margin-bottom: 4vw;
+		}
+	}
+	&gallery-row{
+		flex-wrap: wrap;
+		margin-top: -30px;
+	}
+	&gallery-cols{
+		padding-top: 30px;
+		.makeCols(12, 12);
+		@media @media-size-xs-l {
+			.makeCols(6, 12);
+		}
+		@media @media-notsmart {
+			.makeCols(3, 12);
+		}
+		@media @media-size-sm-p {
+			.makeCols(6, 12);
+		}
+		
+	}
+	&gallery-card{}
 }
 //
 ._nih__{
