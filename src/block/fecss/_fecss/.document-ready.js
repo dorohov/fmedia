@@ -21,7 +21,7 @@ $(function(){
 
 $(function(){
 	$(document.body).on('keydown', function(event){
-		event.stopPropagation();
+		//event.stopPropagation();
 		
 		$(document.body).trigger('fecss.keydown', [{
 			alt : event.altKey,

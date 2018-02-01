@@ -4,51 +4,66 @@
 // Enables slideshow functionality
 //
 // Example of usage:
-// $.fancybox.getInstance().slideShow.start()
+// $.fancybox.getInstance().SlideShow.start()
 //
 // ==========================================================================
 ;(function (document, $) {
 	'use strict';
 
+	$.extend(true, $.fancybox.defaults, {
+		btnTpl : {
+			slideShow :
+				'<button data-fancybox-play class="fancybox-button fancybox-button--play" title="{{PLAY_START}}">' +
+					'<svg viewBox="0 0 40 40">' +
+						'<path d="M13,12 L27,20 L13,27 Z" />' +
+						'<path d="M15,10 v19 M23,10 v19" />' +
+					'</svg>' +
+				'</button>'
+		},
+		slideShow : {
+			autoStart : false,
+            speed     : 3000
+		}
+	});
+
 	var SlideShow = function( instance ) {
-
 		this.instance = instance;
-
 		this.init();
-
 	};
 
 	$.extend( SlideShow.prototype, {
 		timer    : null,
 		isActive : false,
 		$button  : null,
-		speed    : 3000,
 
 		init : function() {
 			var self = this;
 
-			self.$button = $('<button data-fancybox-play class="fancybox-button fancybox-button--play" title="Slideshow (P)"></button>')
-				.appendTo( self.instance.$refs.buttons );
-
-			self.instance.$refs.container.on('click', '[data-fancybox-play]', function() {
+			self.$button = self.instance.$refs.toolbar.find('[data-fancybox-play]').on('click', function() {
 				self.toggle();
 			});
 
+			if ( self.instance.group.length < 2 || !self.instance.group[ self.instance.currIndex ].opts.slideShow ) {
+				self.$button.hide();
+			}
 		},
 
-		set : function() {
+		set : function( force ) {
 			var self = this;
 
 			// Check if reached last element
-			if ( self.instance && self.instance.current && (self.instance.current.opts.loop || self.instance.currIndex < self.instance.group.length - 1 )) {
-
+			if ( self.instance && self.instance.current && (force === true || self.instance.current.opts.loop || self.instance.currIndex < self.instance.group.length - 1 )) {
 				self.timer = setTimeout(function() {
-					self.instance.next();
+					if ( self.isActive ) {
+						self.instance.jumpTo( (self.instance.currIndex + 1) % self.instance.group.length );
+					}
 
-				}, self.instance.current.opts.slideShow.speed || self.speed);
+				}, self.instance.current.opts.slideShow.speed);
 
 			} else {
 				self.stop();
+				self.instance.idleSecondsCounter = 0;
+				self.instance.showControls();
 			}
 		},
 
@@ -62,39 +77,30 @@
 
 		start : function() {
 			var self = this;
+			var current = self.instance.current;
 
-			self.stop();
-
-			if ( self.instance && self.instance.current && ( self.instance.current.opts.loop || self.instance.currIndex < self.instance.group.length - 1 )) {
-
-				self.instance.$refs.container.on({
-					'beforeLoad.fb.player'	: $.proxy(self, "clear"),
-					'onComplete.fb.player'	: $.proxy(self, "set"),
-				});
-
+			if ( current ) {
 				self.isActive = true;
 
-				if ( self.instance.current.isComplete ) {
-					self.set();
-				}
+				self.$button
+					.attr( 'title', current.opts.i18n[ current.opts.lang ].PLAY_STOP )
+					.removeClass( 'fancybox-button--play' )
+					.addClass( 'fancybox-button--pause' );
 
-				self.instance.$refs.container.trigger('onPlayStart');
-
-				self.$button.addClass('fancybox-button--pause');
+					self.set( true );
 			}
-
 		},
 
-		stop: function() {
+		stop : function() {
 			var self = this;
+			var current = self.instance.current;
 
 			self.clear();
 
-			self.instance.$refs.container
-				.trigger('onPlayEnd')
-				.off('.player');
-
-			self.$button.removeClass('fancybox-button--pause');
+			self.$button
+				.attr( 'title', current.opts.i18n[ current.opts.lang ].PLAY_START )
+				.removeClass( 'fancybox-button--pause' )
+				.addClass( 'fancybox-button--play' );
 
 			self.isActive = false;
 		},
@@ -112,20 +118,68 @@
 
 	});
 
-	$(document).on('onInit.fb', function(e, instance) {
+	$(document).on({
+		'onInit.fb' : function(e, instance) {
+			if ( instance && !instance.SlideShow ) {
+				instance.SlideShow = new SlideShow( instance );
+			}
+		},
 
-		if ( instance && instance.group.length > 1 && !!instance.opts.slideShow && !instance.SlideShow ) {
-			instance.SlideShow = new SlideShow( instance );
+		'beforeShow.fb' : function(e, instance, current, firstRun) {
+			var SlideShow = instance && instance.SlideShow;
+
+			if ( firstRun ) {
+
+				if ( SlideShow && current.opts.slideShow.autoStart ) {
+					SlideShow.start();
+				}
+
+			} else if ( SlideShow && SlideShow.isActive )  {
+				SlideShow.clear();
+			}
+		},
+
+		'afterShow.fb' : function(e, instance, current) {
+			var SlideShow = instance && instance.SlideShow;
+
+			if ( SlideShow && SlideShow.isActive ) {
+				SlideShow.set();
+			}
+		},
+
+		'afterKeydown.fb' : function(e, instance, current, keypress, keycode) {
+			var SlideShow = instance && instance.SlideShow;
+
+			// "P" or Spacebar
+			if ( SlideShow && current.opts.slideShow && ( keycode === 80 || keycode === 32 ) && !$(document.activeElement).is( 'button,a,input' ) ) {
+				keypress.preventDefault();
+
+				SlideShow.toggle();
+			}
+		},
+
+		'beforeClose.fb onDeactivate.fb' : function(e, instance) {
+			var SlideShow = instance && instance.SlideShow;
+
+			if ( SlideShow ) {
+				SlideShow.stop();
+			}
 		}
-
 	});
 
-	$(document).on('beforeClose.fb onDeactivate.fb', function(e, instance) {
+	// Page Visibility API to pause slideshow when window is not active
+	$(document).on("visibilitychange", function() {
+		var instance  = $.fancybox.getInstance();
+		var SlideShow = instance && instance.SlideShow;
 
-		if ( instance && instance.SlideShow ) {
-			instance.SlideShow.stop();
+		if ( SlideShow && SlideShow.isActive ) {
+			if ( document.hidden ) {
+				SlideShow.clear();
+
+			} else {
+				SlideShow.set();
+			}
 		}
-
 	});
 
-}(document, window.jQuery));
+}( document, window.jQuery || jQuery ));

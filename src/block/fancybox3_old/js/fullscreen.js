@@ -76,18 +76,11 @@
 		return false;
 	})();
 
-	// If browser does not have Full Screen API, then simply unset default button template and stop
 	if ( !fn ) {
-
-		if ( $ && $.fancybox ) {
-			$.fancybox.defaults.btnTpl.fullScreen = false;
-		}
-
 		return;
 	}
 
 	var FullScreen = {
-
 		request : function ( elem ) {
 
 			elem = elem || document.documentElement;
@@ -96,54 +89,34 @@
 
 		},
 		exit : function () {
-
 			document[ fn.exitFullscreen ]();
-
 		},
 		toggle : function ( elem ) {
 
-			elem = elem || document.documentElement;
-
 			if ( this.isFullscreen() ) {
 				this.exit();
-
 			} else {
 				this.request( elem );
 			}
 
 		},
 		isFullscreen : function()  {
-
 			return Boolean( document[ fn.fullscreenElement ] );
-
 		},
 		enabled : function()  {
-
 			return Boolean( document[ fn.fullscreenEnabled ] );
-
 		}
 	};
-
-	$.extend(true, $.fancybox.defaults, {
-		btnTpl : {
-			fullScreen :
-				'<button data-fancybox-fullscreen class="fancybox-button fancybox-button--fullscreen" title="{{FULL_SCREEN}}">' +
-					'<svg viewBox="0 0 40 40">' +
-						'<path d="M9,12 h22 v16 h-22 v-16 v16 h22 v-16 Z" />' +
-					'</svg>' +
-				'</button>'
-		},
-		fullScreen : {
-			autoStart : false
-		}
-	});
 
 	$(document).on({
 		'onInit.fb' : function(e, instance) {
 			var $container;
 
-			if ( instance && instance.group[ instance.currIndex ].opts.fullScreen ) {
+			if ( instance && !!instance.opts.fullScreen && !instance.FullScreen) {
 				$container = instance.$refs.container;
+
+				instance.$refs.button_fs = $('<button data-fancybox-fullscreen class="fancybox-button fancybox-button--fullscreen" title="Full screen (F)"></button>')
+					.appendTo( instance.$refs.buttons );
 
 				$container.on('click.fb-fullscreen', '[data-fancybox-fullscreen]', function(e) {
 
@@ -154,57 +127,37 @@
 
 				});
 
-				if ( instance.opts.fullScreen && instance.opts.fullScreen.autoStart === true ) {
+				if ( instance.opts.fullScreen.requestOnStart === true ) {
 					FullScreen.request( $container[ 0 ] );
 				}
 
-				// Expose API
-				instance.FullScreen = FullScreen;
-
-			} else if ( instance ) {
-				instance.$refs.toolbar.find('[data-fancybox-fullscreen]').hide();
 			}
 
-		},
+		}, 'beforeMove.fb' : function(e, instance) {
 
-		'afterKeydown.fb' : function(e, instance, current, keypress, keycode) {
-
-			// "P" or Spacebar
-			if ( instance && instance.FullScreen && keycode === 70 ) {
-				keypress.preventDefault();
-
-				instance.FullScreen.toggle( instance.$refs.container[ 0 ] );
+			if ( instance && instance.$refs.button_fs ) {
+				instance.$refs.button_fs.toggle( !!instance.current.opts.fullScreen );
 			}
 
-		},
-
-		'beforeClose.fb' : function( instance ) {
-			if ( instance && instance.FullScreen ) {
-				FullScreen.exit();
-			}
+		}, 'beforeClose.fb':  function() {
+			FullScreen.exit();
 		}
 	});
 
 	$(document).on(fn.fullscreenchange, function() {
-		var isFullscreen = FullScreen.isFullscreen(),
-			instance = $.fancybox.getInstance();
+		var instance = $.fancybox.getInstance();
+		var  $what   = instance ? instance.current.$placeholder : null;
 
-		if ( instance ) {
+		if ( $what ) {
 
-			// If image is zooming, then force to stop and reposition properly
-			if ( instance.current && instance.current.type === 'image' && instance.isAnimating ) {
-				instance.current.$content.css( 'transition', 'none' );
+			// If image is zooming, then this will force it to stop and reposition properly
+			$what.css( 'transition', 'none' );
 
-				instance.isAnimating = false;
+			instance.isAnimating = false;
 
-				instance.update( true, true, 0 );
-			}
-
-			instance.trigger( 'onFullscreenChange', isFullscreen );
-
-			instance.$refs.container.toggleClass( 'fancybox-is-fullscreen', isFullscreen );
+			instance.update( true, true, 0 );
 		}
 
 	});
 
-}( document, window.jQuery || jQuery ));
+}(document, window.jQuery));
